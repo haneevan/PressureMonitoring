@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pressure Dashboard</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Air Pressure Dashboard</h1>
+
+    <div id="dashboard-container">
+        <!-- Front Sensor Display -->
+        <div class="data-card">
+            <h2>Front Pressure</h2>
+            <p><span id="front-pressure-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+            <p class="timestamp">Last Updated: <span id="front-last-updated">...</span></p>
+        </div>
+
+        <!-- Rear Sensor Display -->
+        <div class="data-card">
+            <h2>Rear Pressure</h2>
+            <p><span id="rear-pressure-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+            <p class="timestamp">Last Updated: <span id="rear-last-updated">...</span></p>
+        </div>
+    </div>
+
+    <!-- Graph Card -->
+    <div id="graph-card">
+        <h2>Pressure History</h2>
+        <canvas id="pressure-chart"></canvas>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
