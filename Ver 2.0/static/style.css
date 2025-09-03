@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the entire page content */
+    gap: 2rem;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    align-items: center; /* Center the card pairs */
+}
+
+.card-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center; /* Center horizontally within the container */
+}
+
+.data-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    width: auto;
+}
+
+@media (min-width: 900px) {
+    .card-pair {
+        flex-direction: row;
+        justify-content: flex-start; /* Aligns pairs to the left on larger screens */
+    }
+    .data-group {
+        flex-direction: column;
+    }
+}
+
+.data-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    flex-basis: 100%;
+    max-width: 400px;
+    max-height: 200px;
+}
+
+.data-card:hover {
+    transform: translateY(-5px);
+}
+
+h2 {
+    margin-top: 0;
+    color: #34495e;
+    font-size: 1.5rem;
+}
+
+.pressure-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2ecc71;
+    margin: 0.5rem 0;
+}
+
+.unit {
+    font-size: 1.25rem;
+    color: #7f8c8d;
+}
+
+.timestamp {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    margin-top: 0.5rem;
+}
+
+.graph-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Allows the graph card to take up remaining space */
+    height: 450px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
