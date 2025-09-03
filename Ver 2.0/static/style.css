@@ -5,11 +5,11 @@ body {
     background-color: #f5f7fa;
     color: #333;
     margin: 0;
-    padding: 2rem;
+    padding: 0 10px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the entire page content */
-    gap: 2rem;
+    align-items: center;
 }
 
 h1 {
@@ -23,25 +23,32 @@ h1 {
 #main-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    max-width: 1200px;
+    gap: 1rem;
     width: 100%;
-    align-items: center; /* Center the card pairs */
+    max-width: none;
+    height: calc(100vh - 5rem); /* Fill most of the viewport */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .card-pair {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 2rem;
     width: 100%;
-    justify-content: center; /* Center horizontally within the container */
+    height: 45%; /* Each card-pair takes about half the page */
+    min-height: 400px;
 }
 
 .data-group {
     display: flex;
-    flex-direction: row;
-    gap: 0.2rem;
-    width: auto;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 0 0 320px; /* Fixed width for data cards group */
+    height: 92.5%;
+    justify-content: stretch;
+    align-items: center; /* Center cards horizontally */
 }
 
 @media (min-width: 900px) {
@@ -58,13 +65,22 @@ h1 {
     background-color: #ffffff;
     border: 1px solid #e0e6ed;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
     text-align: center;
+    overflow-wrap: anywhere;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
-    flex-basis: 100%;
-    max-width: 400px;
-    max-height: 200px;
+    flex: 1 1 0;
+    min-width: 220px;
+    max-width: 320px;
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .data-card:hover {
@@ -74,25 +90,29 @@ h1 {
 h2 {
     margin-top: 0;
     color: #34495e;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    word-break: break-word;
+    margin-bottom: 0.5rem;
 }
 
 .pressure-value {
-    font-size: 3rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #2ecc71;
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
+    word-break: break-word;
 }
 
 .unit {
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     color: #7f8c8d;
 }
 
 .timestamp {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #95a5a6;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
+    word-break: break-word;
 }
 
 .graph-card {
@@ -101,11 +121,31 @@ h2 {
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex-grow: 1; /* Allows the graph card to take up remaining space */
-    height: 450px;
+    flex: 2 1 0;
+    height: 80%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 canvas {
     width: 100% !important;
     height: 100% !important;
+    flex: 1 1 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    #main-container {
+        height: auto;
+        
+    }
+    .card-pair {
+        flex-direction: column;
+        height: auto;
+    }
+    .graph-card {
+        min-width: 0;
+    }
 }
