@@ -11,11 +11,29 @@ app = Flask(__name__)
 
 # The background thread will continuously read the sensors and log data.
 
+def background_logging_task():
+    """
+    A continuous task to read sensor data and log it to the database.
+    This runs in a separate thread to not block the Flask web server.
+    """
+    print("Starting background sensor logging task...")
+    while True:
+        try:
+            front_pressure = get_front_pressure()
+            rear_pressure = get_rear_pressure()
+            log_reading(front_pressure, rear_pressure)
+            print(f"Logged new reading: Front={front_pressure:.2f} MPa, Rear={rear_pressure:.2f} MPa")
+        except Exception as e:
+            print(f"Error in background task: {e}")
+        time.sleep(0.5)  # Log data every 0.5 seconds
+
 def initialize_system():
     """
-    Initializes the database.
+    Initializes the database and starts the background logging thread.
     """
     setup_database()
+    t = threading.Thread(target=background_logging_task, daemon=True)
+    t.start()
 
 @app.route('/')
 def index():
