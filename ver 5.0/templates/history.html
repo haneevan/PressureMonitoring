@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>圧力履歴 - History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>圧力履歴</h1>
+        <div class="datetime-display">
+            <div id="current-date"></div>
+            <div id="current-time"></div>
+        </div>
+    </div>
+    <div id="main-container">
+        <div style="margin-bottom: 1.5rem;">
+            <label for="date-picker"><b>日付選択:</b></label>
+            <input type="text" id="date-picker" placeholder="日付を選択">
+            <button id="download-csv" style="margin-left:1rem;">CSVダウンロード</button>
+        </div>
+        <div class="graph-card" style="width: 90vw; max-width: 900px;">
+            <canvas id="pressure-history-graph"></canvas>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='history.js') }}"></script>    
+</body>
+</html>

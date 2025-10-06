@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pressure Dashboard</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Link to Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard-header">
+        <h1>豊田工場65Dスリットエア監視</h1>
+            <div class="header-controls">
+                <!-- <a href="/history" class="history-link"><i class="fas fa-history"></i> 履歴</a> -->
+                <div class="datetime-display">
+                <div id="current-date">Loading...</div>
+                <div id="current-time">Loading...</div>
+                </div>
+            </div>
+    </div>
+    
+    <div id="main-container">
+        <!-- Front Sensors and Graph -->
+        <div class="card-pair">
+            <div class="data-group">
+                <div class="data-card">
+                    <h2>F側 元圧</h2>
+                    <p><span id="front-pressure-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+                    <!--<p class="timestamp">Last Updated: <span id="front-last-updated">...</span></p>-->
+                </div>
+                <div class="data-card">
+                    <h2>F側過去一分平均値</h2>
+                    <p><span id="front-averageM-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+                </div>
+                <div class="data-card">
+                    <h2>F側過去１h平均値</h2>
+                    <p><span id="front-average-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+                </div>
+            </div>
+            <div id="front-graph-card" class="graph-card">
+                <h2>F側センサーグラフ</h2>
+                <canvas id="front-pressure-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Rear Sensors and Graph -->
+        <div class="card-pair">
+            <div class="data-group">
+                <div class="data-card">
+                    <h2>R側 元圧</h2>
+                    <p><span id="rear-pressure-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+                    <!--<p class="timestamp">Last Updated: <span id="rear-last-updated">...</span></p>-->
+                </div>
+                <div class="data-card">
+                    <h2>R側 過去一分平均値<</h2>
+                    <p><span id="rear-averageM-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+                </div>
+                <div class="data-card">
+                    <h2>R側 過去１h平均値</h2>
+                    <p><span id="rear-average-value" class="pressure-value">...</span> <span class="unit">MPa</span></p>
+                </div>
+            </div>
+            <div id="rear-graph-card" class="graph-card">
+                <h2>R側センサーグラフ</h2>
+                <canvas id="rear-pressure-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- Add before closing body tag -->
+<div id="pressureAlarmModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>警告: 空気圧低下</h2>
+            <button onclick="closeModal('pressureAlarmModal')" class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>空気圧が0.100 MPa以下になりました。</p>
+            <p>機械は安全のため停止しています。</p>
+            <p>空気圧を確認してください。</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
