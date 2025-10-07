@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Base styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add this at the top after the @import */
+:root {
+    --color-bg-dark: #2c3e50;
+}
+
+/* Header styles */
+.dashboard-header {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/* Header controls and history link */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.history-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: #2c3e50; /* Fallback color */
+    background-color: var(--color-bg-dark);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.history-link i {
+    margin-right: 8px;
+}
+
+.history-link:hover {
+    background-color: #34495e;
+    text-decoration: none;
+}
+
+
+/* Main container */
+#main-container {
+    width: 98%;
+    margin: 60px auto 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: calc(100vh - 70px);
+}
+
+/* Card pairs */
+.card-pair {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    height: calc(50vh - 65px); /* Changed to viewport height based */
+    min-height: 200px; /* Reduced minimum height */
+}
+
+/* Data group */
+.data-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: calc(30vh - 60px);
+    width: 250px; /* Increased width slightly */
+    min-width: 200px;
+}
+
+/* Data cards */
+.data-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+/* Graph cards */
+.graph-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-grow: 1;
+    min-width: 0;
+    height: 90%; /* Ensure full height */
+}
+
+/* Typography */
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+.pressure-value {
+    
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #00c853; /* Green color */
+}
+
+.unit {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Date time display */
+.datetime-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Canvas */
+canvas {
+    width: 100% !important;
+    height: 100% !important; /* Changed to full height */
+    max-height: calc(100% - 20px); /* Add max-height */
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Add this if you want to use Font Awesome icons */
+.fas {
+    margin-right: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .card-pair {
+        height: calc(50vh - 40px);
+    }
+    
+    .data-group {
+        width: 220px;
+    }
+}
+
+@media (max-height: 800px) {
+    .card-pair {
+        height: calc(50vh - 35px);
+        min-height: 180px;
+    }
+    
+    .data-card {
+        padding: 10px;
+    }
+    
+    .pressure-value {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    #main-container {
+        height: auto;
+        min-height: calc(100vh - 70px);
+    }
+    
+    .card-pair {
+        flex-direction: column;
+        height: auto;
+        min-height: 400px;
+        margin-bottom: 15px;
+    }
+    
+    .data-group {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: auto;
+    }
+    
+    .data-card {
+        flex: 1;
+        min-width: 180px;
+    }
+    
+    .graph-card {
+        height: 250px;
+    }
+}
+
+@media (max-height: 600px) {
+    .card-pair {
+        min-height: 150px;
+    }
+    
+    h2 {
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+    }
+    
+    .pressure-value {
+        font-size: 1.2rem;
+    }
+}
+
