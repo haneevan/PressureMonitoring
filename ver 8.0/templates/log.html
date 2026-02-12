@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ログ確認</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+<body>
+
+<header class="dashboard-header">
+        <h1>ログ確認</h1>
+        <div class="header-controls">
+            <a href="/?start=dashboard" class="history-link"><i class="fas fa-history"></i>メインページ</a>
+            <div class="datetime-display">
+                <div id="current-date">Loading...</div>
+                <div id="current-time">Loading...</div>
+            </div>
+        </div>
+    </header>
+
+<div class="log-container">
+    <div class="log-card">
+        <h2>F側センサーログ</h2>
+        <ul id="front-log-list" class="log-list">
+            <!-- Log entries will be added here by JavaScript -->
+            <li class="log-entry">ログデータの読み込み</li>
+        </ul>
+    </div>
+    <div class="log-card">
+        <h2>R側センサーログ</h2>
+        <ul id="rear-log-list" class="log-list">
+            <!-- Log entries will be added here by JavaScript -->
+            <li class="log-entry">ログデータの読み込み</li>
+        </ul>
+    </div>
+    <div class="log-card error-log">
+        <h2>エラーログ</h2>
+        <ul id="error-log-list" class="log-list error-list">
+            <!-- Error log entries will be added here by JavaScript -->
+            <li class="log-entry">ログデータの読み込み</li>
+        </ul>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='log.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
