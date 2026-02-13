@@ -1,0 +1,3 @@
+-fix pop up errror
+-add history page
+-fix log page
